@@ -1,5 +1,6 @@
 #include "include/window.h"
 #include "include/render.h"
+#include <time.h>
 
 
 int main(int argc, char** argv) {
@@ -23,7 +24,7 @@ int main(int argc, char** argv) {
       col = 0;
       while (col < WIN_W) {
          off = row * WIN_W + col;
-         clr = SDL_MapRGBA(can->format, (col % 255), (col % 255), (col % 255), 255);
+         clr = SDL_MapRGBA(can->format, (time(NULL) % 255), (time(NULL) % 255), (time(NULL) % 255), 255);
          buf[off] = clr;
          col ++;
       }
