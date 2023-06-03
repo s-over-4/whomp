@@ -26,16 +26,14 @@ SDL_Window* window_init(const char* title) {
    return w;
 }
 
-SDL_Renderer* window_renderer_init(SDL_Window* w) {
-   SDL_Renderer* r = SDL_CreateRenderer(
-      w,                         // the window to render to
-      -1,                        // driver to initialize
-      SDL_RENDERER_ACCELERATED   // renderer mode
+SDL_Surface* window_surface_init(SDL_Window* win) {
+   SDL_Surface* surf = SDL_GetWindowSurface(win);
+   return surf;
+} 
+
+SDL_Surface* window_canvas_init() {
+   SDL_Surface* can = SDL_CreateRGBSurfaceWithFormat(
+      0, WIN_W, WIN_H, 32, SDL_PIXELFORMAT_RGBA8888
    );
-
-   if (r == NULL) {
-      die("SDL_CreateRenderer error:", "%s", SDL_GetError());
-   }
-
-   return r;
+   return can;
 }
